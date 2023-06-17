@@ -7,8 +7,10 @@ public class Code {
           private static String reverse(String str) {
             char[] arr = str.toCharArray();
             String newStr = "";
-            for(int i=arr.length-1; i >= 0; i--) {
+
+            for(int i = arr.length-1; i >= 0; i--) {
               newStr += arr[i];
+
             }
 
             return newStr;
