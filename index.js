@@ -21,13 +21,13 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); // Specify the headers allowed in the request
   next();
 });
-
+const server = http.createServer(app);
 
 const tempDirectoryName = "home"; // Replace with your desired directory name
 const tempDirectory = path.join("./", tempDirectoryName);
 fs.mkdirSync(tempDirectory, { recursive: true });
 
-app.post("/https://coding-arena-production.up.railway.app/execute", (req, res) => {
+app.post("/execute", (req, res) => {
     const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
   console.log(filePath);
@@ -72,7 +72,7 @@ app.post("/https://coding-arena-production.up.railway.app/execute", (req, res) =
 });
 
 
-const server = http.createServer(app);
+
 
 server.listen(3001, () => {
   console.log(`Server running on http://localhost:3001`);
