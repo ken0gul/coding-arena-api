@@ -25,7 +25,7 @@ app.use(function(req, res, next) {
 const server = http.createServer(app);
 
 const tempDirectoryName = "home"; // Replace with your desired directory name
-const tempDirectory = path.join("./", tempDirectoryName);
+const tempDirectory = path.join("/", tempDirectoryName);
 fs.mkdirSync(tempDirectory, { recursive: true });
 
 app.post("/execute", (req, res) => {
