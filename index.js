@@ -7,7 +7,7 @@ const http = require("http");
 const PORT = 3001;
 const app = express();
 const corsOptions = {
-  origin: "https://coding-arena-production.up.railway.app", // Replace with the allowed origin for the specific request
+  origin: "http://coding-arena-production.up.railway.app", // Replace with the allowed origin for the specific request
   methods: "POST", // Specify the allowed HTTP methods
 };
 
