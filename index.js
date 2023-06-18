@@ -3,14 +3,8 @@ const path = require("path");
 const fs = require("fs");
 const { exec, spawn } = require("child_process");
 const cors = require("cors");
-const http = require('http');
-const PORT = 3000;
+const http = require("http");
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World!');
-});
 const app = express();
 const corsOptions = {
   origin: "https://coding-arena-production.up.railway.app", // Replace with the allowed origin for the specific request
@@ -25,7 +19,7 @@ const tempDirectory = path.join("./", tempDirectoryName);
 fs.mkdirSync(tempDirectory, { recursive: true });
 
 app.post("/execute", cors(corsOptions), (req, res) => {
-  const javaCode = req.body.code;
+    const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
   console.log(filePath);
 
@@ -68,7 +62,9 @@ app.post("/execute", cors(corsOptions), (req, res) => {
   });
 });
 
-const port = 3001;
-app.listen(port, () => {
+
+const server = http.createServer(app);
+
+server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
