@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const { exec, spawn } = require("child_process");
-const cors = require("cors");
+// const cors = require("cors");
 const http = require("http");
 const app = express();
 console.log("asdasd");
@@ -12,7 +12,7 @@ console.log("asdasd");
 //   allowedHeaders: "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
 //   optionsSuccessStatus: 200,
 // };
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join("/", "public")));
 app.use(function(req, res, next) {
