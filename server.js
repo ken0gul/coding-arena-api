@@ -5,11 +5,10 @@ const { exec, spawn } = require("child_process");
 const cors = require("cors");
 
 const app = express();
-app.use(cors());
-const corsOptions = {
-  origin: 'null', // Replace with the allowed origin for the specific endpoint
-  methods: ['GET', 'POST'], // Specify the allowed HTTP methods
-};
+// app.use(cors());
+app.configure(function() {
+  app.use(cors({ origin: 'null', credentials: true }));
+});
 
 app.use(express.json());
 app.use(express.static(path.join("/home/john/code-editor/temp", "public")));
@@ -21,7 +20,7 @@ const tempDirectory = path.join(
 );
 fs.mkdirSync(tempDirectory, { recursive: true });
 
-app.post("https://coding-arena-api-production.up.railway.app/execute", cors(corsOptions), (req, res) => {
+app.post("/execute", (req, res) => {
   const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
   console.log(filePath);
