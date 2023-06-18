@@ -6,17 +6,17 @@ const cors = require("cors");
 const http = require("http");
 const app = express();
 
-const corsOptions = {
-  origin: "https://coding-arena-production.up.railway.app/*",
-  methods: "POST",
-  allowedHeaders: "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
-  optionsSuccessStatus: 200,
-};
-
+// const corsOptions = {
+//   origin: "https://coding-arena-production.up.railway.app/*",
+//   methods: "POST",
+//   allowedHeaders: "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+//   optionsSuccessStatus: 200,
+// };
+app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join("/", "public")));
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://coding-arena-production.up.railway.app"); // Replace "*" with the specific origin you want to allow, or use "*" to allow any origin
+  res.header("Access-Control-Allow-Origin", "https://coding-arena-production.up.railway.app/*"); // Replace "*" with the specific origin you want to allow, or use "*" to allow any origin
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE"); // Specify the HTTP methods allowed by your application
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); // Specify the headers allowed in the request
   next();
@@ -27,7 +27,7 @@ const tempDirectoryName = "home"; // Replace with your desired directory name
 const tempDirectory = path.join("./", tempDirectoryName);
 fs.mkdirSync(tempDirectory, { recursive: true });
 
-app.post("/execute", cors(corsOptions), (req, res) => {
+app.post("/execute", (req, res) => {
     const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
   console.log(filePath);
