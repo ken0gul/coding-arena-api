@@ -3,7 +3,14 @@ const path = require("path");
 const fs = require("fs");
 const { exec, spawn } = require("child_process");
 const cors = require("cors");
+const http = require('http');
+const PORT = 3000;
 
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World!');
+});
 const app = express();
 const corsOptions = {
   origin: "https://coding-arena-production.up.railway.app", // Replace with the allowed origin for the specific request
