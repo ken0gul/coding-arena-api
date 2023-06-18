@@ -20,7 +20,7 @@ const tempDirectory = path.join(
 );
 fs.mkdirSync(tempDirectory, { recursive: true });
 
-app.post("/execute", cors(corsOptions) (req, res) => {
+app.post("/execute", cors(corsOptions), (req, res) => {
   const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
   console.log(filePath);
