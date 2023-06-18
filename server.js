@@ -6,9 +6,9 @@ const cors = require("cors");
 
 const app = express();
 // app.use(cors());
-app.configure(function() {
-  app.use(cors({ origin: 'null', credentials: true }));
-});
+const corsOptions = {
+  origin: "https://coding-arena-production.up.railway.app", // Replace with the allowed origin for the specific request
+};
 
 app.use(express.json());
 app.use(express.static(path.join("/home/john/code-editor/temp", "public")));
@@ -20,7 +20,7 @@ const tempDirectory = path.join(
 );
 fs.mkdirSync(tempDirectory, { recursive: true });
 
-app.post("/execute", (req, res) => {
+app.post("/execute", cors(corsOptions) (req, res) => {
   const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
   console.log(filePath);
