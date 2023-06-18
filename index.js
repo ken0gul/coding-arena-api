@@ -5,7 +5,7 @@ const { exec, spawn } = require("child_process");
 const cors = require("cors");
 const http = require("http");
 const app = express();
-
+console.log("asdasd");
 // const corsOptions = {
 //   origin: "https://coding-arena-production.up.railway.app/*",
 //   methods: "POST",
