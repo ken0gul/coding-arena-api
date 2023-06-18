@@ -30,6 +30,7 @@ fs.mkdirSync(tempDirectory, { recursive: true });
 
 app.post("/execute", (req, res) => {
   res.header("Access-Control-Allow-Origin", "https://coding-arena-production.up.railway.app");
+  res.send({ "msg": "This has CORS enabled 🎈" })
   console.log(req);
     const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
