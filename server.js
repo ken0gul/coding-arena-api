@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 const corsOptions = {
-  origin: 'https://coding-arena-production.up.railway.app/', // Replace with the allowed origin for the specific endpoint
+  origin: 'https://coding-arena-production.up.railway.app/execute', // Replace with the allowed origin for the specific endpoint
   methods: ['GET', 'POST'], // Specify the allowed HTTP methods
 };
 
