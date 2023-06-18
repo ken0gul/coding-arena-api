@@ -5,24 +5,19 @@ const { exec, spawn } = require("child_process");
 const cors = require("cors");
 
 const app = express();
-const corsOptions = {
-  origin: "https://coding-arena-production.up.railway.app", // Replace with the allowed origin for the specific request
-  methods: "POST", // Specify the allowed HTTP methods
-};
+app.use(cors());
 
 app.use(express.json());
-app.use(express.static(path.join("/", "public")));
+app.use(express.static(path.join("/home/john/code-editor/temp", "public")));
 
 const tempDirectoryName = "home"; // Replace with your desired directory name
-const tempDirectory = path.join("./", tempDirectoryName);
+const tempDirectory = path.join(
+  "/home/john/code-editor/temp",
+  tempDirectoryName
+);
 fs.mkdirSync(tempDirectory, { recursive: true });
 
-app.post("/execute", cors(corsOptions), (req, res) => {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://coding-arena-production.up.railway.app"
-  );
-  res.header("Access-Control-Allow-Methods", "POST");
+app.post("/execute", (req, res) => {
   const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
   console.log(filePath);
