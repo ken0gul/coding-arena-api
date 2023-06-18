@@ -10,11 +10,6 @@ const corsOptions = {
   origin: 'https://coding-arena-production.up.railway.app/', // Replace with the allowed origin for the specific endpoint
   methods: ['GET', 'POST'], // Specify the allowed HTTP methods
 };
-// Middleware to add the CORS header
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
-});
 
 app.use(express.json());
 app.use(express.static(path.join("/home/john/code-editor/temp", "public")));
