@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const { exec, spawn } = require("child_process");
-// const cors = require("cors");
+const cors = require("cors");
 const http = require("http");
 const app = express();
 console.log("asdasd");
@@ -12,9 +12,9 @@ console.log("asdasd");
 //   allowedHeaders: "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
 //   optionsSuccessStatus: 200,
 // };
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join("/", "public")));
+app.use(express.static(path.join("./", "public")));
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "https://coding-arena-production.up.railway.app"); // Replace "*" with the specific origin you want to allow, or use "*" to allow any origin
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE"); // Specify the HTTP methods allowed by your application
