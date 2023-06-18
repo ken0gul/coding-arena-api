@@ -6,6 +6,10 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
+const corsOptions = {
+  origin: 'https://coding-arena-production.up.railway.app/', // Replace with the allowed origin for the specific endpoint
+  methods: ['GET', 'POST'], // Specify the allowed HTTP methods
+};
 // Middleware to add the CORS header
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,7 +26,7 @@ const tempDirectory = path.join(
 );
 fs.mkdirSync(tempDirectory, { recursive: true });
 
-app.post("/execute", (req, res) => {
+app.post("/execute", cors(corsOptions), (req, res) => {
   const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
   console.log(filePath);
