@@ -13,6 +13,11 @@ const corsOptions = {
 
 app.use(express.json());
 app.use(express.static(path.join("/", "public")));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+  });
 
 const tempDirectoryName = "home"; // Replace with your desired directory name
 const tempDirectory = path.join("./", tempDirectoryName);
