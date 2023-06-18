@@ -29,6 +29,7 @@ const tempDirectory = path.join("./", tempDirectoryName);
 fs.mkdirSync(tempDirectory, { recursive: true });
 
 app.post("/execute", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://coding-arena-production.up.railway.app");
   console.log(req);
     const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
