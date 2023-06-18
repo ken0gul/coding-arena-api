@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 const corsOptions = {
-  origin: 'https://coding-arena-production.up.railway.app/execute', // Replace with the allowed origin for the specific endpoint
+  origin: 'null', // Replace with the allowed origin for the specific endpoint
   methods: ['GET', 'POST'], // Specify the allowed HTTP methods
 };
 
@@ -21,7 +21,7 @@ const tempDirectory = path.join(
 );
 fs.mkdirSync(tempDirectory, { recursive: true });
 
-app.post("/execute", cors(corsOptions), (req, res) => {
+app.post("https://coding-arena-api-production.up.railway.app/execute", cors(corsOptions), (req, res) => {
   const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
   console.log(filePath);
