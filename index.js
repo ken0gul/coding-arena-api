@@ -27,7 +27,7 @@ const tempDirectoryName = "home"; // Replace with your desired directory name
 const tempDirectory = path.join("./", tempDirectoryName);
 fs.mkdirSync(tempDirectory, { recursive: true });
 
-app.post("/execute", (req, res) => {
+app.post("/https://coding-arena-production.up.railway.app/execute", (req, res) => {
     const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
   console.log(filePath);
