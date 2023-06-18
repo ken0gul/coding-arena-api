@@ -4,7 +4,6 @@ const fs = require("fs");
 const { exec, spawn } = require("child_process");
 const cors = require("cors");
 const http = require("http");
-const PORT = 3001;
 const app = express();
 
 const corsOptions = {
@@ -74,6 +73,6 @@ app.post("/execute", cors(corsOptions), (req, res) => {
 
 const server = http.createServer(app);
 
-server.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+server.listen(3001, () => {
+  console.log(`Server running on http://localhost:3001`);
 });
