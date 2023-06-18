@@ -8,13 +8,10 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
-app.use(express.static(path.join("/home/john/code-editor/temp", "public")));
+app.use(express.static(path.join("/", "public")));
 
 const tempDirectoryName = "home"; // Replace with your desired directory name
-const tempDirectory = path.join(
-  "/home/john/code-editor/temp",
-  tempDirectoryName
-);
+const tempDirectory = path.join("./", tempDirectoryName);
 fs.mkdirSync(tempDirectory, { recursive: true });
 
 app.post("/execute", (req, res) => {
