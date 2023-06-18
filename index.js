@@ -30,11 +30,13 @@ fs.mkdirSync(tempDirectory, { recursive: true });
 
 app.post("/execute", (req, res) => {
   res.header("Access-Control-Allow-Origin", "https://coding-arena-production.up.railway.app");
-  res.send({ "msg": "This has CORS enabled 🎈" })
-  console.log(req);
-    const javaCode = req.body.code;
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE"); // Specify the HTTP methods allowed by your application
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); // Specify the headers allowed in the request
+  res.header("Access-Control-Max-Age" ,"3600");
+ 
+  const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
-  console.log(filePath);
+ 
 
   // Create a temporary Java file and write the code to it
   fs.writeFileSync(filePath, javaCode);
@@ -55,23 +57,6 @@ app.post("/execute", (req, res) => {
     res
       .status(200)
       .json({ output: result ? `Congrats! => ${stdout}` : "Try Again!" });
-  });
-
-  const javaProcess = spawn("java", [filePath]);
-
-  javaProcess.stdout.on("data", (data) => {
-    const output = data.toString().trim();
-    // Process the output here if needed
-    console.log(`Java code output: ${output}`);
-  });
-
-  javaProcess.stderr.on("data", (data) => {
-    console.error(`Java code error: ${data}`);
-  });
-
-  javaProcess.on("close", (code) => {
-    // `code` contains the exit code of the Java process
-    console.log(`Java code exited with code ${code}`);
   });
 });
 
