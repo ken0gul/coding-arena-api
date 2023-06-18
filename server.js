@@ -61,7 +61,7 @@ app.post("/execute", (req, res) => {
   });
 });
 
-const port = 3001;
+const port = https://coding-arena-api-production.up.railway.app/;
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
