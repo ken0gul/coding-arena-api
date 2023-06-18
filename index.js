@@ -42,7 +42,7 @@ app.post("/execute", (req, res) => {
   fs.writeFileSync(filePath, javaCode);
 
   // Compile and execute the Java code
-  exec(`java ${filePath}`, (error, stdout, stderr) => {
+  exec(`javac ${filePath} && java ${filePath}`, (error, stdout, stderr) => {
     if (error) {
       res.status(500).json({ error: error.message });
       return;
