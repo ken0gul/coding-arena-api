@@ -8,7 +8,7 @@ const PORT = 3001;
 const app = express();
 
 const corsOptions = {
-  origin: "https://coding-arena-production.up.railway.app/",
+  origin: "https://coding-arena-production.up.railway.app",
   methods: "POST",
   allowedHeaders: "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
   optionsSuccessStatus: 200,
