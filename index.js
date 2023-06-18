@@ -16,7 +16,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(express.static(path.join("/", "public")));
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // Replace "*" with the specific origin you want to allow, or use "*" to allow any origin
+  res.header("Access-Control-Allow-Origin", "https://coding-arena-production.up.railway.app"); // Replace "*" with the specific origin you want to allow, or use "*" to allow any origin
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE"); // Specify the HTTP methods allowed by your application
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); // Specify the headers allowed in the request
   next();
