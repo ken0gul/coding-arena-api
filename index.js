@@ -28,6 +28,7 @@ const tempDirectory = path.join("./", tempDirectoryName);
 fs.mkdirSync(tempDirectory, { recursive: true });
 
 app.post("/execute", (req, res) => {
+  console.log(req);
     const javaCode = req.body.code;
   const filePath = path.join(tempDirectory, "Code.java");
   console.log(filePath);
