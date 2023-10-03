@@ -63,7 +63,7 @@ app.post("/execute", (req, res) => {
       return;
     }
     // codingArena
-    let result = stdout === "anerAgnidoc";
+    let result = stdout === "anerAgnidoC";
 
     res
       .status(200)
